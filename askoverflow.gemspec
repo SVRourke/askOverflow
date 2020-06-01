@@ -6,12 +6,12 @@ require "askoverflow/version"
 Gem::Specification.new do |spec|
   spec.name          = "askoverflow"
   spec.version       = Askoverflow::VERSION
-  spec.authors       = ["SVR"]
+  spec.authors       = ["Sam Rourke"]
   spec.email         = ["samuel@rourke.tech"]
 
   spec.summary       = %q{commandline tool to search stackoverflow.}
   spec.description   = %q{commandline tool to search stackoverflow quickly and simply.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/SVRourke/askoverflow"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.
@@ -19,11 +19,15 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir        = "bin"
+  spec.executables   = ["askoverflow"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry", "~> 0.13"
+
+  spec.add_runtime_dependency "nokogiri"
+  # spec.add_runtime_dependency "open-uri"
 end

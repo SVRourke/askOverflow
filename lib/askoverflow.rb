@@ -1,6 +1,8 @@
 require "askoverflow/version"
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
 
-module Askoverflow
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "askoverflow/cli"
+require_relative "askoverflow/result"
+require_relative "askoverflow/scrape"
