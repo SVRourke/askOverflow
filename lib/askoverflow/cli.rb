@@ -13,25 +13,24 @@ module AskOverflow
         # =======================
         def display_results(query)
             puts"Results"
-            puts"blah blah blah blah 8 answers"
-            puts"blah blah blah blah 67 answers"
-            puts"blah blah blah blah 41 answers"
-            puts"blah blah blah blah 10 answers"
+            puts"===================================="
+            puts"(1) blah blah blah blah 8 answers"
+            puts"===================================="
+            puts"(2) blah blah blah blah 67 answers"
+            puts"===================================="
+            puts"(3) blah blah blah blah 41 answers"
+            puts"===================================="
+            puts"(4) blah blah blah blah 10 answers"
+            puts"===================================="
         end
 
         def display_specific
             puts "Q"
             puts "sldjfslkdnflksfgkdfvdfbgdB?"
-            puts "sjvndlfvndklfnvkdnfklbvdmfvdf"
-            puts "sjvndlfvndklfnvkdnfklbsfdgkdh"
-            puts "sjdfjgdljfngldknfgkldnf"
+            puts " "
             puts "A"
             puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-            puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-            puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-            puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-            puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-            puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
+            puts " "
         end
 
 
