@@ -40,24 +40,25 @@ module AskOverflow
         # =======================
         def get_query
             puts "enter a search"
-            answer = gets.strip
+            gets.strip
         end
 
         def get_result
             puts "Which would you like to read"
-            answer = gets.strip
+            gets.strip
         end
 
         def back_to_results
             puts ""
             puts "back / exit"
-            return gets.strip
+            gets.strip
         end
 
         def fquery(raw)
             fq = raw.gsub(" ", "+")
             return "q=#{fq}"
         end
+
         def make_url(query)
             base = 'https://stackoverflow.com/search?'
             q = fquery(query)
@@ -65,34 +66,39 @@ module AskOverflow
             return "#{base}#{q}#{answeredOnly}"
         end
 
+        def fquery(raw)
+            fq = raw.gsub(" ", "+")
+            return "q=#{fq}"
+        end
+
+        def make_url(query)
+            base = 'https://stackoverflow.com/search?'
+            q = fquery(query)
+            answeredOnly = "+hasaccepted%3Atrue"
+            return "#{base}#{q}#{answeredOnly}"
+        end
+
+
         # =======================
         # =====MAIN=METHODS======
         # =======================
-
         def run
             running = true
             puts "Ask Overflow"
-
             while running == true
                 query = get_query
-
-                if query == "exit"
-                    running = false
-                else
-                    viewing = true
-
-                    while viewing == true
-                        display_results(query)
-                        specific_result = get_result
-
-                        if specific_result.to_s == 'exit'
-                            viewing = false
-                            running = false
-                        else
-                            display_specific
-                            # back_to_results ? next : running = false
-                            puts back_to_results == "exit"
-                        end
+                query == "exit" ? running = false : viewing = true
+                while viewing == true
+                    query = fquery(query)
+                    display_results(query)
+                    specific_result = get_result
+                    if specific_result.to_s == 'exit'
+                        viewing = false
+                        running = false
+                    else
+                        display_specific
+                        # back_to_results ? next : running = false
+                        puts back_to_results == "exit"
                     end
                 end
             end

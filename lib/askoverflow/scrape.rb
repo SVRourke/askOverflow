@@ -1,9 +1,8 @@
 class ScrapeParse
-
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
-
+    
     def getSearchResults(url)
         doc = getDoc(url)
         doc.css("div.search-result").each do |result|
