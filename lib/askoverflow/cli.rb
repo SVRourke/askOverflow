@@ -5,7 +5,7 @@ module AskOverflow
         # ======INITIALIZE=======
         # =======================
         def initialize
-            @scraper = ScrapeParse.new
+            @scraper = Scrape.new
         end
 
         # =======================

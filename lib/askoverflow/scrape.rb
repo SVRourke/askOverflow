@@ -1,4 +1,6 @@
-class ScrapeParse
+# require 'pry'
+
+class Scrape
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
@@ -18,7 +20,20 @@ class ScrapeParse
         end
     end
 
-    def getPostContent(url)
-        puts "NOT DONE"
+    def getPostContent(result)
+        doc = getDoc("https://stackoverflow.com/#{result.link}")
+        question = doc.css("div.question div.postcell div.post-text").text
+        answer = doc.css("div.answer div.answercell div.post-text").text
+        result.add_content({
+            :full_q => question,
+            :full_a => answer
+        })
     end
 end
+
+# binding.pry
+
+=begin 
+    TODO
+        -add tab=relevance
+=end
