@@ -3,4 +3,4 @@ require 'bundler/setup'
 require 'askoverflow'
 binding.pry
 
-AskOverflow::CLI.new.run
+AskOverflow::App.new.run
