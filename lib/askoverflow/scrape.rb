@@ -1,6 +1,11 @@
 # require 'pry'
 
 class Scrape
+    def initialize
+        puts 'hello'
+    end
+
+
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
