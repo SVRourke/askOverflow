@@ -4,38 +4,28 @@ require 'askoverflow'
 
 
 RSpec.describe Result do
-    describe "#new" do
-        it "accepts a hash of attributes and creates a new Result object from the hash." do
-            test_hash = { 
-                :question => "Q",
-                :sample => "text sample",
-                :tags => ['a', 'b', 'c']
-                }
-            test_result = Result.new(test_hash)
-            expect(test_result.question).to eq("Q")
-        end
-        it "assigns a unique id to each Result object." do
-            5.times {Result.new({})}
-            ids = Result.all.collect {|r| r.id}
-            expect(ids.count).to eq(ids.uniq.count)
+    describe "#new_from_scrape" do
+        it "accepts a hash of values and creates a new Result with supplied values" do
+            a = Result.new({:question => "?"})
+            expect(a.question).to eq("?")
         end
     end
 
-    describe "#all" do
-        it "returns a list of all Result objects.\n " do
+    describe "#get_result_by_id" do
+        it "returns a Result obj with the specified id" do
             4.times {Result.new({})}
-            expect(Result.all.count).to eq(10)
+            expect(Result.get_result_by_id(3).id).to eq(3)
         end
     end
 
-    describe "#add_content" do
+    describe "#add_full" do
         it "accepts a hash of additional data and adds it to the Result" do
             test_hash = {
                 :full_q => "TEST FULL QUESTION",
                 :full_a => "TEST FULL ANSWER"
             }
             res = Result.new({})
-            res.add_content(test_hash)
+            res.add_full(test_hash)
             expect(res.full_q).to eq("TEST FULL QUESTION")
         end
         it "full question added can be accessed" do
@@ -49,6 +39,14 @@ RSpec.describe Result do
             res = Result.new({})
             res.add_content(test_hash)
             expect(res.full_a).to eq("test")
+        end
+    end
+
+    describe "#clear_results" do
+        it "deletes all existing results" do
+            25.times {Result.new({})}
+            Result.clear_results
+            expect(Result.all.count).to eq(0)
         end
     end
 end

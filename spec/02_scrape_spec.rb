@@ -16,21 +16,21 @@ RSpec.describe Scrape do
             expect(doc.class.to_s).to eq("Nokogiri::HTML::Document")
         end
     end
-    describe "#getSearchResults" do
+    describe "#scrape_results" do
         it "takes a url as argument and initializes a new Result for each scraped result" do
             url = "https://stackoverflow.com/questions/tagged/ruby"
             test_scraper = Scrape.new
-            test_scraper.getSearchResults(url)
+            test_scraper.scrape_results(url)
             expect(Result.all.count).to be > 0
         end
     end
-    describe "#getPostContent" do
+    describe "#scrape_specific" do
         it "takes a result object as an argument, scrapes result.link and adds scraped full q & a to result instance" do
             url = "https://stackoverflow.com/questions/tagged/ruby"
             test_scraper = Scrape.new
-            test_scraper.getSearchResults(url)
+            test_scraper.scrape_results(url)
             res = Result.all.first
-            test_scraper.getPostContent(res)
+            test_scraper.scrape_specific(res)
             expect(res.full_a).not_to be nil
         end
     end

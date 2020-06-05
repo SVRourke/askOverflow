@@ -3,23 +3,16 @@ require 'askoverflow'
 
 RSpec.describe App do
     describe "new" do
-        it "creates a new instance of App" do
-            test_app = App.new
-            expect(test_app.class.to_s).to eq("App")
-        end
+       
     end
     describe "#f_query" do
-        it "takes a string and formats it as a url query" do
-            test_app = App.new
-            query = "what is ruby"
-            expect(test_app.f_query(query)).to eq("q=what+is+ruby")
-        end
+        
     end
-    describe "#make_url" do
+    describe "#build_url" do
         if "takes a string query and returns a url to scrape" do
             test_app = App.new
             query = "what is ruby"
-            expect(test_app.make_url(query)).to eq("https://stackoverflow.com/search?tab=relevance&q=what%20is%20ruby")
+            expect(test_app.build_url(query)).to eq("https://stackoverflow.com/search?tab=relevance&q=what%20is%20ruby")
         end
     end
 end
