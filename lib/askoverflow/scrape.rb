@@ -1,16 +1,14 @@
 # require 'pry'
-
 class Scrape
     def initialize
         puts 'hello'
     end
 
-
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
-    
-    def getSearchResults(url)
+
+    def scrape_results(url)
         doc = getDoc(url)
         doc.css("div.search-result").each do |result|
             Result.new({
@@ -25,7 +23,7 @@ class Scrape
         end
     end
 
-    def getPostContent(result)
+    def scrape_specific(result)
         doc = getDoc("https://stackoverflow.com/#{result.link}")
         question = doc.css("div.question div.postcell div.post-text").text
         answer = doc.css("div.answer div.answercell div.post-text").text
@@ -35,10 +33,4 @@ class Scrape
         })
     end
 end
-
 # binding.pry
-
-=begin 
-    TODO
-        -add tab=relevance
-=end

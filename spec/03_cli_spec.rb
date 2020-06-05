@@ -35,6 +35,12 @@ RSpec.describe CLI do
             STDOUT.should_receive(:puts).with('enter the id of a result')
         end
     end
+    describe "#prompt_return" do
+        it "asks if a user would like to return to the results or leave" do
+            ui.prompt_return
+            STDOUT.should_receive(:puts).with('back / exit?')
+        end
+    end
     describe "#display_results" do
         it "prints results to the terminal" do
             ui.display_results

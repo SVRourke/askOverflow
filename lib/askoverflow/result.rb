@@ -10,12 +10,20 @@ class Result
         @@all << self
     end
 
-    def add_content(content_hash)
+    def self.find_by_id(id)
+        @@all.find {|r| r.id == id}
+    end
+
+    def add_full(content_hash)
         content_hash.each do |s, v|
             self.send("#{s}=", v)
         end
     end
 
+    def self.clear_results
+        @@all.clear
+    end
+    
     def self.all
         @@all
     end

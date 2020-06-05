@@ -1,10 +1,12 @@
 # spec/result_spec.rb
 require 'rspec'
 require 'askoverflow'
+require './askoverflow/result.rb'
+
 
 
 RSpec.describe Result do
-    describe "#new_from_scrape" do
+    describe "#new" do
         it "accepts a hash of values and creates a new Result with supplied values" do
             a = Result.new({:question => "?"})
             expect(a.question).to eq("?")

@@ -1,36 +1,30 @@
 # Controller
 class CLI
-    # =======================
-    # ====DISPLAY=METHODS====
-    # =======================
-    def display_results
-        15.times {puts ""}
-        puts"Results"
-        puts"===================================="
-        puts"(1) blah blah blah blah 8 answers"
-        puts"===================================="
-        puts"(2) blah blah blah blah 67 answers"
-        puts"===================================="
-        puts"(3) blah blah blah blah 41 answers"
-        puts"===================================="
-        puts"(4) blah blah blah blah 10 answers"
-        puts"===================================="
-    end
-
-    def display_specific(result)
-        15.times {puts ""}
-        puts "Q"
-        puts "sldjfslkdnflksfgkdfvdfbgdB?"
-        puts " "
-        puts "A"
-        puts "dflkgnsdflgsldkgmb;dsmaf;lms;df"
-        puts " "
-    end
-
-    def greet_user
-        10.times {puts ""}
+    def greet
         puts "askoverflow"
-        4.times {puts ""}
+    end
+
+    def prompt_search
+        puts "please enter a search or exit: "
+    end
+
+    def prompt_result
+        puts "enter the id of a result"
+    end
+
+    def prompt_return
+        puts "back / exit?"
+    end
+
+    def display_results
+        Result.all.each do |r|
+            puts "#{r.id} ||#{r.question}||#{r.sample}||#{r.tags}||#{r.ask_date}||#{r.answer_count}||#{r.author}"
+        end
+    end
+
+    def display_specific(id)
+        result = Result.find_by_id(id)
+        puts "#{r.full_q}||#{r.full_a}"
     end
 
     def goodbye
@@ -38,25 +32,6 @@ class CLI
         puts "I hope we helped"
         4.times {puts ""}
     end
-
-
-    # =======================
-    # ====HELPER=METHODS=====
-    # =======================
-    def prompt_query
-        puts "enter a search"
-    end
-
-    def prompt_result
-        3.times {puts ""}
-        puts "Which would you like to read"
-    end
-
-    def prompt_return
-        3.times {puts "====================="}
-        puts "back / exit?"
-    end
-
 end
 
 
