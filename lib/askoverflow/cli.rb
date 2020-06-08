@@ -17,8 +17,8 @@ class CLI
     end
 
     def display_results
-        Result.all.each do |r|
-            puts "#{r.id} ||#{r.question}||#{r.sample}||#{r.tags}||#{r.ask_date}||#{r.answer_count}||#{r.author}"
+        Result.all.each_with_index do |r, i|
+            puts "#{i + 1} ||#{r.question}||#{r.sample}||#{r.tags}||#{r.ask_date}||#{r.answer_count}||#{r.author}"
         end
     end
 

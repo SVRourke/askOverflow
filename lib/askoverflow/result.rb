@@ -11,7 +11,7 @@ class Result
     end
 
     def self.find_by_id(id)
-        @@all.find {|r| r.id == id}
+        @@all[id - 1]
     end
 
     def add_full(content_hash)
