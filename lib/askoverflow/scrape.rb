@@ -1,9 +1,5 @@
 # require 'pry'
 class Scrape
-    def initialize
-        puts 'hello'
-    end
-
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
@@ -25,11 +21,9 @@ class Scrape
 
     def scrape_specific(result)
         doc = getDoc("https://stackoverflow.com/#{result.link}")
-        question = doc.css("div.question div.postcell div.post-text").text
-        answer = doc.css("div.answer div.answercell div.post-text").text
         result.add_content({
-            :full_q => question,
-            :full_a => answer
+            :full_q => doc.css("div.question div.postcell div.post-text").text,
+            :full_a => doc.css("div.answer div.answercell div.post-text").text
         })
     end
 end
