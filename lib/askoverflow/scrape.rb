@@ -1,9 +1,12 @@
-# require 'pry'
 class Scrape
+    # helper function used to request and load the document
     def getDoc(url)
         Nokogiri::HTML(open(url))
     end
-
+    # preliminary scraping function
+    # accepts a url, loads the page, scrapes
+    # the results on the page and creates a new
+    # Result object for each scraped result
     def scrape_results(url)
         doc = getDoc(url)
         doc.css("div.search-result").each do |result|
@@ -18,7 +21,11 @@ class Scrape
             })
         end
     end
-
+    # Secondary scraping function
+    # accepts a Result instance,
+    # bulids a url using the result's :link
+    # and scrapes the specific result page's
+    # full question and full answer
     def scrape_specific(result)
         doc = getDoc("https://stackoverflow.com/#{result.link}")
         result.add_full({
@@ -27,4 +34,3 @@ class Scrape
         })
     end
 end
-# binding.pry
