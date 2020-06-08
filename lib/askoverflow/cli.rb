@@ -9,7 +9,7 @@ class CLI
     end
 
     def prompt_result
-        puts "enter the id of a result"
+        puts "enter the id of a result or exit"
     end
 
     def prompt_return
@@ -19,6 +19,7 @@ class CLI
     def display_results
         Result.all.each_with_index do |r, i|
             puts "#{i + 1} ||#{r.question}||#{r.sample}||#{r.tags}||#{r.ask_date}||#{r.answer_count}||#{r.author}"
+            puts "++++++++++++++++++++++++++++++++++++++++++++++++++"
         end
     end
 

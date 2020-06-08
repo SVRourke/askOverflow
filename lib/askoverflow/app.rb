@@ -1,5 +1,5 @@
 require 'pry'
-require '../askoverflow.rb'
+require 'askoverflow.rb'
 
 class App
     def initialize
@@ -20,14 +20,44 @@ class App
         return "#{base}#{q}#{answeredOnly}"
     end
 
+    # def greet_user
+    
+    # end
+
     def run
-        # greet user
         # main loop of the program
+        running = true
+        
+        # greet user
+        @ui.greet
+        
         #  get search terms
+        @ui.prompt_search
+        query = gets.strip
+        running == false if query == 'exit'
+
         # scrape term
+        url = make_url(query)
+        @scraper.scrape_results(url)
+
         # display results
+        @ui.display_results
+
         # get specific result
+        @ui.prompt_result
+        chosen_result = gets.strip
+        running == false if chosen_result == 'exit'
+
+        # scrape specific
+        @scraper.scrape_specific(Result.find_by_id(chosen_result)])
+
+        # display specific
+        @ui.display_specific()
+
+
         # ask user if they would like to return to results
+        @ui.prompt_return
+        
         # if exit do so else go back to results
     end
 end
