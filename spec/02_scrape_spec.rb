@@ -1,7 +1,5 @@
-# require 'rspec'
 require 'spec_helper'
-# require 'askoverflow'
-require 'pry'
+
 RSpec.describe Scrape do
     before(:all) do
         @url = "https://stackoverflow.com/search?q=%22ruby%22"
@@ -10,7 +8,6 @@ RSpec.describe Scrape do
         @s.scrape_specific(Result.all.first)
 
     end
-
     describe "#new" do
         it "create a new instance of Scrape and takes no initializing arguments" do
             expect(@s.class.to_s).to eq("Scrape")

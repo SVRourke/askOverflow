@@ -1,5 +1,3 @@
-# spec/03_cli/spec.rb
-# require 'rspec'
 require 'spec_helper'
 
 RSpec.describe CLI do
@@ -15,7 +13,6 @@ RSpec.describe CLI do
             :full_a => "FULLANSWER",
             :full_q => "FULLQUESTION"
         }
-        # # Result.new_from_scrape(test_hash)
     end
     describe "#greet" do
         it "greets the user" do

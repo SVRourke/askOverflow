@@ -1,5 +1,4 @@
-# spec/result_spec.rb
-require './spec_helper'
+require 'spec_helper'
 
 RSpec.describe Result do
     describe " #new" do
