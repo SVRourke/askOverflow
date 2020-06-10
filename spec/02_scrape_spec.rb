@@ -24,14 +24,11 @@ RSpec.describe Scrape do
     end
     describe "#scrape_results" do
         it "takes a url as argument and initializes a new Result for each scraped result" do
-            # a = Scrape.new
-            # @s.scrape_results(@url)
             expect(Result.all.count).not_to eq(0)
         end
     end
     describe "#scrape_specific" do
         it "takes a result object as an argument, scrapes result.link and adds scraped full q & a to result instance" do
-            # @scrape.scrape_specific(Result.all.first)
             expect(Result.all.first.full_a).not_to be nil
         end
     end
