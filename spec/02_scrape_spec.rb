@@ -1,5 +1,5 @@
-require 'rspec'
-require 'askoverflow'
+# require 'rspec'
+require './spec_helper'
 
 RSpec.describe Scrape do
     describe "#new" do
@@ -11,7 +11,7 @@ RSpec.describe Scrape do
     describe "#getDoc" do
         it "takes a url as argument and returns the html document" do
             url = "https://stackoverflow.com/questions/tagged/ruby"
-            test_scraper = Scrape.new
+            # test_scraper = Scrape.new
             doc = test_scraper.getDoc(url)
             expect(doc.class.to_s).to eq("Nokogiri::HTML::Document")
         end

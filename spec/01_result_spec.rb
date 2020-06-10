@@ -1,25 +1,26 @@
 # spec/result_spec.rb
-require 'rspec'
-require 'askoverflow'
-require './askoverflow/result.rb'
-
-
+require './spec_helper'
 
 RSpec.describe Result do
     describe "#new" do
         it "accepts a hash of values and creates a new Result with supplied values" do
             a = Result.new({:question => "?"})
             expect(a.question).to eq("?")
+            expect(a.class).to eq(Result)
+            Result.clear_results
         end
     end
-
-    describe "#get_result_by_id" do
-        it "returns a Result obj with the specified id" do
-            4.times {Result.new({})}
-            expect(Result.get_result_by_id(3).id).to eq(3)
+    # fix
+    describe "#find_by_id" do
+        it "accepts a user entered index for a 1->10 indexed list of results and returns the proper result" do
+            Result.new({:question => "?"})
+            Result.new({:question => "!"})
+            Result.new({:question => "Correct!"})
+            expect(Result.find_by_id(3).question).to eq("Correct!")
+            Result.clear_results
         end
     end
-
+    # fix
     describe "#add_full" do
         it "accepts a hash of additional data and adds it to the Result" do
             test_hash = {
@@ -33,13 +34,13 @@ RSpec.describe Result do
         it "full question added can be accessed" do
             test_hash = {:full_q => "test"}
             res = Result.new({})
-            res.add_content(test_hash)
+            res.add_full(test_hash)
             expect(res.full_q).to eq("test")
         end
         it "full answer added can be accessed" do
             test_hash = {:full_a => "test"}
             res = Result.new({})
-            res.add_content(test_hash)
+            res.add_full(test_hash)
             expect(res.full_a).to eq("test")
         end
     end
