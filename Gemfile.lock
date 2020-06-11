@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    askoverflow (0.1.0)
+    askoverflow (0.1.1)
       nokogiri
 
 GEM
